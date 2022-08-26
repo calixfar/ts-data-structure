@@ -1,12 +1,12 @@
 import { recursiveBinarySearch } from './binary-search'
 
 describe('BinarySearch', () => {
-  test('should returns -1 if the value is not in array', () => {
+  test('should return -1 if the value is not in the array', () => {
     const arr = [1,2,3,4,5,6,7]
 
     expect(recursiveBinarySearch(arr, 8)).toBe(-1)
   })
-  test('should returns the index about value position if that one is in array', () => {
+  test('should return the index from position of the value if that one is in the array', () => {
     const arr = [1,2,3,4,5,6,7]
 
     expect(recursiveBinarySearch(arr, 1)).toBe(0)
