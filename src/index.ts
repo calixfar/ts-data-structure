@@ -1,5 +1,11 @@
-import { recursiveSelectionSort } from './algorithms/sort/selection-sort'
+import { backtrackingLabyrinth } from './algorithms/backtracking/labyrinth'
 
-const arr = [11,4,1,10,12,2,5,3]
-
-recursiveSelectionSort(arr)
+const array = [
+  [0,0,0,1,1],
+  [1,0,0,0,0],
+  [1,1,0,1,0],
+  [1,0,1,0,1],
+  [0,1,1,1,0]
+  ]
+  
+  backtrackingLabyrinth(array)
