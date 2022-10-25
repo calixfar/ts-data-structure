@@ -23,9 +23,9 @@ export class Node implements INode {
     this.children.push(node)
   }
 
-  find(valueToMatch: string, attribute: keyof Required<INodeAttributes>) {
+  find(valueToMatch: string, attribute: keyof Required<INodeAttributes>, matchWithRegex: boolean = false) {
     const recursive = (): Node | null => {
-      if (this[attribute] === valueToMatch) {
+      if (this[attribute] && matchWithRegex ? new RegExp(valueToMatch, 'ig').test((this[attribute] as string)) : this[attribute] === valueToMatch) {
         return this
       }
   
@@ -36,7 +36,11 @@ export class Node implements INode {
       let foundNode = null
   
       for (const child of this.children) {
-        foundNode = child.find(valueToMatch, attribute)
+        foundNode = child.find(valueToMatch, attribute, matchWithRegex)
+
+        if (foundNode) {
+          break
+        }
       }
 
       return foundNode
@@ -47,5 +51,13 @@ export class Node implements INode {
 
   findByTag (tag: Tag) {
     return this.find(tag, 'tag')
+  }
+
+  findById (id: string) {
+    return this.find(id, 'id')
+  }
+
+  findByClass (classAttribute: string) {
+    return this.find(classAttribute, 'class', true)
   }
 }

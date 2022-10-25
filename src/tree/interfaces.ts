@@ -9,8 +9,8 @@ export interface INodeAttributes {
 export interface INode extends INodeAttributes {
   children: INode[]
   push: (node: INode) => void
-  find: (identifier: string, attribute: keyof Required<INodeAttributes>) => INode | null
+  find: (identifier: string, attribute: keyof Required<INodeAttributes>, matchWithRegex?: boolean) => INode | null
   findByTag: (tag: Tag) => INode | null
-  // findById: (identifier: string) => INode | null
-  // findByClass: (identifier: string) => INode | null
+  findById: (identifier: string) => INode | null
+  findByClass: (identifier: string) => INode | null
 }
