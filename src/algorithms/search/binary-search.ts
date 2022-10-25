@@ -1,7 +1,7 @@
 export function recursiveBinarySearch(array: number[], valueToFind: number) {
   let start = 0, end = array.length
 
-  function recursive() {
+  function recursive(): number {
     if (start >= end) {
         return -1
     }

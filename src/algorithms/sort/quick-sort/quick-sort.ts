@@ -1,4 +1,4 @@
-export function quickSort(arr: number[]) {
+export function quickSort(arr: number[]): number[] {
   if (arr.length < 2) {
     return arr
   }
@@ -19,7 +19,7 @@ export function quickSort(arr: number[]) {
 }
 
 
-export function quickSortV2(arr: number[]) {
+export function quickSortV2(arr: number[]): number[] {
   if (arr.length < 2) {
     return arr
   }
