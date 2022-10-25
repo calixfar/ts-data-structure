@@ -26,4 +26,5 @@ const generalTree = new GeneralTree(node1)
 
 console.log('return', generalTree.root.findByTag('a'))
 console.log('return', generalTree.root.findById('node6'))
+console.log('return', generalTree.root.findById('node5'))
 console.log('return', generalTree.root.findByClass('node'))
