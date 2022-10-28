@@ -1,4 +1,4 @@
-import { INode, INodeAttributes, Tag } from '../interfaces'
+import { FindAllAllowedAttributes, INode, INodeAttributes, Tag } from '../interfaces'
 
 export class Node implements INode {
   tag: Tag
@@ -59,5 +59,35 @@ export class Node implements INode {
 
   findByClass (classAttribute: string) {
     return this.find(classAttribute, 'class', true)
+  }
+
+  findAll (valueToMatch: string, attribute: FindAllAllowedAttributes, matchWithRegex: boolean = false): INode[] {
+    let nodes: INode[] = []
+
+    const recursive = (node: INode) => {
+      if (node[attribute] && matchWithRegex ? new RegExp(valueToMatch, 'ig').test((node[attribute] as string)) : node[attribute] === valueToMatch) {
+        nodes.push(node)
+      }
+  
+      if (!node.children.length) {
+        return
+      }
+      
+      for (const child of node.children) {
+        recursive(child)
+      }
+    }
+
+    recursive(this) 
+
+    return nodes
+  }
+
+  findAllByClass (identifier: string) {
+    return this.findAll(identifier, 'class', true)
+  }
+
+  findAllByTag (tag: Tag) {
+    return this.findAll(tag, 'tag')
   }
 }

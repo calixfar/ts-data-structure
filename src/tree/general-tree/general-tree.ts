@@ -9,10 +9,10 @@ export class GeneralTree {
   }
 }
 
-const node1 = new Node({ tag: 'div', id: 'node1' })
+const node1 = new Node({ tag: 'div', id: 'node1', class: 'node2' })
 const node2 = new Node({ tag: 'div', id: 'node2' })
 const node3 = new Node({ tag: 'button', id: 'node3' })
-const node4 = new Node({ tag: 'form', id: 'node4', class: 'node-4' })
+const node4 = new Node({ tag: 'div', id: 'node4', class: 'node' })
 const node5 = new Node({ tag: 'a', id: 'node5' })
 const node6 = new Node({ tag: 'input', id: 'node6' })
 
@@ -24,7 +24,5 @@ node4.push(node6)
 
 const generalTree = new GeneralTree(node1)
 
-console.log('return', generalTree.root.findByTag('a'))
-console.log('return', generalTree.root.findById('node6'))
-console.log('return', generalTree.root.findById('node5'))
-console.log('return', generalTree.root.findByClass('node'))
+console.log('return',  generalTree.root.findAllByClass('node'))
+console.log('return',  generalTree.root.findAllByTag('div'))
